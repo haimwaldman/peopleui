@@ -1,0 +1,46 @@
+/* Styling for the select container */
+.select-container {
+    position: relative;
+  }
+  
+  /* Styling for the select control */
+  .select-control {
+    padding: 10px; /* Adjust the padding as needed for your design */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none; /* Disable text selection */
+    background-color: #fff; /* Set a background color to match your design */
+  }
+  
+  /* Styling for the arrow icon */
+  .arrow-icon {
+    float: right; /* Align the arrow icon to the right */
+    margin-top: 2px; /* Adjust the margin as needed */
+    font-size: 14px; /* Adjust the font size */
+  }
+  
+  /* Styling for the options (dropdown menu) */
+  .options {
+    position: absolute;
+    top: 100%; /* Position the dropdown menu below the select control */
+    left: 0;
+    display: none; /* Initially hide the dropdown */
+    background-color: #fff; /* Set a background color to match your design */
+    border: 1px solid #ccc;
+    border-top: none; /* Remove top border to avoid double borders */
+    border-radius: 0 0 4px 4px; /* Adjust the border radius as needed */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Styling for individual options in the dropdown */
+  .options li {
+    padding: 8px 12px; /* Adjust the padding as needed */
+    cursor: pointer;
+  }
+  
+  /* Show the dropdown when select-control is clicked */
+  .select-control.open + .options {
+    display: block;
+  }
+  

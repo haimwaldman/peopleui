@@ -1,0 +1,8 @@
+.validation-errors {
+    margin-top: 10px;
+  }
+  
+  .validation-error {
+    color: red; /* Set the text color to red or a color of your choice */
+    font-weight: bold; /* Add bold text for emphasis */
+  }
