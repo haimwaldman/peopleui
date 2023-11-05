@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import configs from "./configs.json";
 import People from "./components/People";
 import AddPerson from "./components/AddPerson";
 import toast, { Toaster } from "react-hot-toast";
-const SERVER_DOMAIN = "https://localhost:7202/api/";
 function App() {
   const [people, setPeople] = useState([]);
   const [showAddPerson, setShowAddPerson] = useState(false);
@@ -16,12 +16,12 @@ function App() {
     getPeople();
   }, []);
   const fetchPeople = async () => {
-    const res = await fetch(`${SERVER_DOMAIN}People`);
+    const res = await fetch(`${configs["SERVER_DOMAIN"]}People`);
     const data = await res.json();
     return data;
   };
   const addPerson = async (person) => {
-    const res = await fetch(`${SERVER_DOMAIN}People`, {
+    const res = await fetch(`${configs["SERVER_DOMAIN"]}People`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function App() {
   };
 
   const saveEditPerson = async (person) => {
-    const res = await fetch(`${SERVER_DOMAIN}People`, {
+    const res = await fetch(`${configs["SERVER_DOMAIN"]}People`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ function App() {
     }
   };
   const deletePerson = async (id) => {
-    const res = await fetch(`${SERVER_DOMAIN}People/${id}`, {
+    const res = await fetch(`${configs["SERVER_DOMAIN"]}People/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
