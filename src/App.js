@@ -80,7 +80,13 @@ function App() {
           Click to add a person
         </button>
       </div>
-      {showAddPerson && <AddPerson onAdd={addPerson} toast={toast} />}
+      {showAddPerson && (
+        <AddPerson
+          onAdd={addPerson}
+          toast={toast}
+          toggleShowPerson={toggleShowPerson}
+        />
+      )}
       {people.length > 0 ? (
         <People
           people={people}

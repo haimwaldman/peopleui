@@ -5,7 +5,7 @@ import Select from "react-select";
 
 import "./AddPerson.css";
 import InputField from "./InputField";
-const AddPerson = ({ onAdd, toast }) => {
+const AddPerson = ({ onAdd, toast, toggleShowPerson }) => {
   const [id, setId] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -83,6 +83,7 @@ const AddPerson = ({ onAdd, toast }) => {
       setSelectedSex(null);
       setPhoneNumber(null);
       onAdd(person);
+      toggleShowPerson();
     }
   };
 
