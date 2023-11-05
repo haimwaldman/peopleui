@@ -33,6 +33,7 @@ const People = ({ people, toast, onSave, onDelete }) => {
             <th>Date Of Birth</th>
             <th>Sex</th>
             <th>Phone Number</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

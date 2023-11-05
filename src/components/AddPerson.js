@@ -60,7 +60,7 @@ const AddPerson = ({ onAdd, toast }) => {
     let yyyy = dateInput.getFullYear();
     let mm = dateInput.getMonth();
     if (mm < 10) mm = "0" + mm;
-    let dd = dateInput.getDay();
+    let dd = dateInput.formatDate();
     if (dd < 10) dd = "0" + dd;
     return `${yyyy}-${mm}-${dd}`;
   };

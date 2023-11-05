@@ -29,7 +29,7 @@ const Person = ({
     person.DateOfBirth ? new Date(person.DateOfBirth) : null
   );
   const [selectedSex, setSelectedSex] = useState(person.Sex);
-  const [phoneNumber, setPhoneNumber] = useState(person.phoneNumber);
+  const [phoneNumber, setPhoneNumber] = useState(person.Phone);
   const regexes = {
     numbers: /^[0-9]+$/,
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
@@ -79,7 +79,7 @@ const Person = ({
     let yyyy = dateInput.getFullYear();
     let mm = dateInput.getMonth();
     if (mm < 10) mm = "0" + mm;
-    let dd = dateInput.getDay();
+    let dd = dateInput.getDate();
     if (dd < 10) dd = "0" + dd;
     return `${yyyy}-${mm}-${dd}`;
   };
@@ -113,7 +113,6 @@ const Person = ({
           )}
         </td>
         <td>
-          {" "}
           {editIndex === index ? (
             <InputField
               label="Email"
@@ -143,6 +142,7 @@ const Person = ({
         <td>
           {editIndex === index ? (
             <div className="select">
+              <div>{person.Sex ? person.Sex : null}</div>
               <Select
                 options={sexOptions}
                 value={selectedSex}
@@ -166,22 +166,26 @@ const Person = ({
             person.Phone
           )}
         </td>
-        <td>
-          {index !== editIndex ? (
-            <div>
+        {index !== editIndex ? (
+          <div>
+            <td>
               <FontAwesomeIcon
                 icon={faEdit}
                 onClick={() => handleEditClick(index)}
                 title="Edit"
               />
+            </td>
+            <td>
               <FontAwesomeIcon
                 icon={faDeleteLeft}
                 onClick={() => handleDeleteClick(index)}
                 title="Delete"
               />
-            </div>
-          ) : (
-            <div>
+            </td>
+          </div>
+        ) : (
+          <div>
+            <td>
               <FontAwesomeIcon
                 onClick={() => {
                   if (validateFieldsOnSubmit()) {
@@ -192,7 +196,7 @@ const Person = ({
                       DateOfBirth: selectedDate
                         ? formatDate(selectedDate)
                         : null,
-                      Sex: selectedSex ? selectedSex.value : null,
+                      Sex: selectedSex ? selectedSex.value : null, //person.Sex,
                       Phone: phoneNumber ? parseInt(phoneNumber) : null,
                     });
                   }
@@ -200,14 +204,16 @@ const Person = ({
                 icon={faSave}
                 title="Save"
               />
+            </td>
+            <td>
               <FontAwesomeIcon
                 onClick={() => handleCancelClick(-1)}
                 icon={faTimes}
                 title="Cancel"
               />
-            </div>
-          )}
-        </td>
+            </td>
+          </div>
+        )}
       </tr>
     </>
   );
