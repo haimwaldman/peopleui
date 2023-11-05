@@ -1,0 +1,32 @@
+/* Add this CSS to your stylesheet */
+table {
+    width: 100%; /* Make the table fill its container */
+    border-collapse: collapse; /* Remove spacing between cells */
+  }
+  
+  td {
+    padding: 10px; /* Add some padding to cells for better spacing */
+    border: 1px solid #ccc; /* Add borders for cell separation */
+    width: 14.28%; /* Set an equal width for each cell (100% / 7 columns) */
+    text-align: center; /* Center-align the content in cells */
+  }
+  
+  /* Style the table header if needed */
+  th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0; /* Add a background color to header cells */
+    font-weight: bold; /* Make the header text bold */
+    text-align: center;
+  }
+  
+  /* Style the input fields if needed */
+  input {
+    width: 100%; /* Make input fields fill the cell */
+    box-sizing: border-box; /* Include padding and border in the width */
+  }
+  
+  /* Style the select dropdown if needed */
+  .select select {
+    width: 100%; /* Make the select element fill the cell */
+  }

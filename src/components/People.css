@@ -31,4 +31,19 @@
   .table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
   }
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    /* padding: 10px 20px; */
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    height: 40px;
+    width: 85px;
+  }
   
+  .button:hover {
+    background-color: #0056b3;
+  }

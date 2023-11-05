@@ -26,7 +26,11 @@ const Select = ({ options, onSelect }) => {
       {isOpen && (
         <ul className="options">
           {options.map((option, index) => (
-            <li key={index} onClick={() => handleOptionClick(option)}>
+            <li
+              className="option"
+              key={index}
+              onClick={() => handleOptionClick(option)}
+            >
               {option}
             </li>
           ))}
