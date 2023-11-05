@@ -2,7 +2,6 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
-// import toast, { Toaster } from "react-hot-toast";
 
 import "./AddPerson.css";
 import InputField from "./InputField";
@@ -24,7 +23,8 @@ const AddPerson = ({ onAdd, toast }) => {
     { value: "Other", label: "Other" },
   ];
   const handleIdChange = (e) => {
-    if (e.target.value.match(regexes.numbers)) setId(e.target.value);
+    if (e.target.value === "" || e.target.value.match(regexes.numbers))
+      setId(e.target.value);
     else toast.error("Id can have only numbers!");
   };
   const handleNameChange = (e) => setName(e.target.value);
@@ -36,7 +36,8 @@ const AddPerson = ({ onAdd, toast }) => {
     setSelectedSex(selectedOption);
   };
   const handlePhoneNumberChange = (e) => {
-    if (e.target.value.match(regexes.numbers)) setPhoneNumber(e.target.value);
+    if (e.target.value === "" || e.target.value.match(regexes.numbers))
+      setPhoneNumber(e.target.value);
     else {
       toast.error("Phone number can have only numbers!");
     }

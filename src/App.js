@@ -29,8 +29,10 @@ function App() {
       body: JSON.stringify(person),
     });
     const data = await res.json();
-    if (data === "Added Successfuly") setPeople([...people, person]);
-    else {
+    if (data === "Added Successfuly") {
+      setPeople([...people, person]);
+      toast("Added new person");
+    } else {
       console.log(data);
       toast.error("Error saving data, see logs or call support.");
     }
@@ -45,9 +47,10 @@ function App() {
       body: JSON.stringify(person),
     });
     const data = await res.json();
-    if (data === "Updated Successfuly") setPeople(fetchPeople());
-    else {
-      console.log(data);
+    if (data === "Updated Successfuly") {
+      setPeople(await fetchPeople());
+      toast("Updated Successfully!");
+    } else {
       toast.error("Error saving data, see logs or call support.");
     }
   };
@@ -57,11 +60,12 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify(person),
     });
     const data = await res.json();
-    if (data === "Updated Successfuly") setPeople(fetchPeople());
-    else {
+    if (data === "Deleted Successfuly") {
+      setPeople(await fetchPeople());
+      toast("Deleted Successfully!");
+    } else {
       console.log(data);
       toast.error("Error saving data, see logs or call support.");
     }
@@ -80,8 +84,8 @@ function App() {
       {people.length > 0 ? (
         <People
           people={people}
-          toast
-          onSaveEdit={saveEditPerson}
+          toast={toast}
+          onSave={saveEditPerson}
           onDelete={deletePerson}
         />
       ) : (

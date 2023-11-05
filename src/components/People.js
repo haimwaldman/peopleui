@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Person from "./Person";
 import "./People.css";
-const People = ({ people, toast, saveEditPerson, deletePerson }) => {
+const People = ({ people, toast, onSave, onDelete }) => {
   const [editIndex, setEditIndex] = useState(-1);
   const handleEditClick = (ind) => {
     setEditIndex(ind);
@@ -9,10 +9,18 @@ const People = ({ people, toast, saveEditPerson, deletePerson }) => {
   const handleCancelClick = () => {
     setEditIndex(-1);
   };
-  const handleSaveClick = () => {
+  const handleSaveClick = (person) => {
     setEditIndex(-1);
+    onSave(person);
   };
-  const handleDeleteClick = () => {};
+  const handleDeleteClick = (id) => {
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this item?"
+    );
+    if (shouldDelete) {
+      onDelete(id);
+    }
+  };
   return (
     <div className="table-container">
       <h2>List of People</h2>
@@ -38,6 +46,7 @@ const People = ({ people, toast, saveEditPerson, deletePerson }) => {
               key={person.Id}
               index={person.Id}
               editIndex={editIndex}
+              toast={toast}
             />
           ))}
         </tbody>

@@ -40,8 +40,11 @@ const Person = ({
     { value: "Other", label: "Other" },
   ];
   const handleIdChange = (e) => {
-    if (e.target.value.match(regexes.numbers)) setId(e.target.value);
-    else toast.error("Id can have only numbers!");
+    if (e.target.value === "" || e.target.value.match(regexes.numbers))
+      setId(e.target.value);
+    else {
+      toast.error("Id can have only numbers!");
+    }
   };
   const handleNameChange = (e) => setName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -52,7 +55,8 @@ const Person = ({
     setSelectedSex(selectedOption);
   };
   const handlePhoneNumberChange = (e) => {
-    if (e.target.value.match(regexes.numbers)) setPhoneNumber(e.target.value);
+    if (e.target.value === "" || e.target.value.match(regexes.numbers))
+      setPhoneNumber(e.target.value);
     else {
       toast.error("Phone number can have only numbers!");
     }
@@ -182,12 +186,14 @@ const Person = ({
                 onClick={() => {
                   if (validateFieldsOnSubmit()) {
                     handleSaveClick({
-                      id,
-                      name,
-                      email,
-                      dateOfBirth: selectedDate,
-                      sex: selectedSex,
-                      phoneNumber,
+                      Id: parseInt(id),
+                      Name: name,
+                      Email: email,
+                      DateOfBirth: selectedDate
+                        ? formatDate(selectedDate)
+                        : null,
+                      Sex: selectedSex ? selectedSex.value : null,
+                      Phone: phoneNumber ? parseInt(phoneNumber) : null,
                     });
                   }
                 }}
